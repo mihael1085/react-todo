@@ -1,7 +1,7 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-function TodoList(props) {
+function TodoList({todos, index, key, removeTodo}) {
 	const styles = {
 		ul: {
 			'width': '600px',
@@ -10,8 +10,8 @@ function TodoList(props) {
 	}
 	return (
 		<ul style={styles.ul}>
-			{props.todos.map((todo, index) => {
-				return ( <TodoItem todo = {todo} key={todo.id} index={index}/> )
+			{todos.map((todo, index) => {
+				return ( <TodoItem todo={todo} key={todo.id} index={index} deleteTodo={removeTodo}/> )
 			})}
 		</ul>
 	)

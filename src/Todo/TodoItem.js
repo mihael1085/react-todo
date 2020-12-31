@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import Context from '../context'
 
-function TodoItem(props) {
+function TodoItem({ todo, index, deleteTodo}) {
+	const { toggleTodo } = useContext(Context)
 	const styles = {
 		li: {
 			'listStyleType': 'none',
@@ -16,15 +18,25 @@ function TodoItem(props) {
 		span:{
 		}
 	}
+
+
+
 	return (
 		<li style={styles.li}>
-			<span style={styles.span}>
-				<input type="checkbox" />
-				<strong>{ props.index + 1}</strong>
+			<span className={todo.completed ? 'done' : ''}>
+				<input 
+					type="checkbox" 
+					onChange = {() => {
+						toggleTodo(todo.id)
+						console.log(todo)
+					}
+					}
+				/>
+				<strong>{ index + 1}</strong>
 				&nbsp;
-				{ props.todo.title }
+				{ todo.title }
 			</span>
-			<button style={styles.button}>&times;</button>
+			<button style={styles.button} onClick={() => deleteTodo(todo.id)}>&times;</button>
 		</li>
 	)
 }
