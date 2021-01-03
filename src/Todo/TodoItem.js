@@ -1,8 +1,10 @@
 import React, {useContext} from 'react'
 import Context from '../context'
+ 
 
 function TodoItem({ todo, index, deleteTodo}) {
 	const { toggleTodo } = useContext(Context)
+	const { removeTodo } = useContext(Context)
 	const styles = {
 		li: {
 			'listStyleType': 'none',
@@ -31,12 +33,14 @@ function TodoItem({ todo, index, deleteTodo}) {
 						console.log(todo)
 					}
 					}
+					checked = {todo.completed}
+
 				/>
 				<strong>{ index + 1}</strong>
 				&nbsp;
 				{ todo.title }
 			</span>
-			<button style={styles.button} onClick={() => deleteTodo(todo.id)}>&times;</button>
+			<button style={styles.button} onClick={() => removeTodo(todo.id)}>&times;</button>
 		</li>
 	)
 }
