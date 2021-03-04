@@ -17,6 +17,7 @@ export default class Modal extends React.Component {
 						<div className="modal-body">
 							<h1>Modal titile</h1>
 							<p>fweefewf</p>
+							<p>ovijeroijreogj</p>
 							<button onClick={() => this.setState({isOpen: false})}>Close</button>
 						</div>
 					</div> ) 
